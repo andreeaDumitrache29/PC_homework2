@@ -1,0 +1,46 @@
+	Task 1
+	
+	Functia nraparitii numara aparitiile cuvantului dat ca parmetru in sirul specificat. In p se obtine cuvantul curent prin folosirea functiei strtok.
+Daca p si cuvantul cautat sunt identice (functia strcmp returneaza 0) se incrementeaza variabila contor.
+	
+	Functia inlocuire inlocuie aparitia unui cuvant (de_inlocuit) cu un alt cuvant (secventa). Intr-un sir auxiliar (aux) vom reconstrui textul.Prin pointerul p
+se returneaza prima aparitie a secventei cautate (de_inlocuit) in text. Pozitia secventei cautate ,salvata in variabila m, va fi data de diferenta p - sir. 
+Intai se copiaza textul in aux pana la aparitia cuvantului cautat. Se trateaza separat cazul m = 0 si se verifica daca urmatorul caracter dupa lungimea secventei 
+cautate este separator(implicit, daca secventa este cuvant). Daca da,in aux se va concatena secventa cu care trebuie inlocuit cuvantul, iar daca nu, se va 
+concatena cuvantul curent din text. Pentru m diferit de 0 se verifica daca secventa este cuvant . In caz negativ,in variabila t retinem numarul de caractere 
+care mai trebuiesc concatenate de la sfarsitul secventei pana la sfarsitul cuvantului din care aceasta face parte.La final vom concatena in sirul aux 
+fie secventa cu care trebuie inlocuit cuvantul,fie cuvantul initial din text,iar pe p il initializam cu urmatoarea aparitiei a secventei cautate in sir.
+Dupa ce p devine NULL, concatenam in aux si restul textului, de la ultima aparitie a lui p in sir.
+
+Functia permuta realizeaza pemrutarea cuvintelor din sir cu k pozitii. Initializam doi pointeri: p1 pointeaza la inceputul textului, iar p2 la primul separator.
+Diferenta celor 2 pointeri ne va da cuvantul ce trebuie permutat.Verificam ca pointerii sa fie pozitionati bine si ca p1 sa nu pointeze la un separator, iar apoi 
+efectuam permutarile astfel:In aux vom copia cuvantul ce trebuie permutat. Daca numarul de permutari k depaseste lungimea cuvantului vom permuta de 
+k % strlen(aux) ori. Concatenam la sfarsitul lui aux primele strlen(aux) - k caractere, copiem restul caracterelor,pentru a sterge caracterele initiale din inceputul 
+sirului, iar la final realizam copierea noului cuvant in sir. Dupa efectuarea permutarii se vor reinitializa pointerii: p1 devine p2, iar p2 va puncta la sfarsitul
+urmatorului cuvant. Ultimul cuvant se va permuta separat,dupa acceasi regula.
+
+In main se va citii numarul de liniii, textul, iar apoi numarul de operatii. In functie de ce operatie se introduce vom apela una dintre cele 3 functii.Pentru operatia
+1 in variabila count se vor numara aparitiile cuvantului in toate cele n linii cu functia nraparitii.Pentru operatia 2 se vor citi cele doua cuvinte: cel ce trebuie 
+inlocuit si secventa cu care se inlocuie. Daca liniile sunt prea mari vom realoca memoria, pentru a nu iesi din dimensiunea maxima a liniilor, apoi se va apela funtia 
+inlocuire pentru fiecare linie.Pnetru oeratia 3 vom citii numarul k de permutari, iar apoi vom apela pentru fiecare linie functia permuta.
+
+ 	Task 2
+ 	
+ 	Declaram o structura ce va contine un vector de caractere pentru cuvintele din liste si numarul aparitiilor fiecarul cuvant.
+	Functia compare va fi ulterior folosita pentru qsort: functia va ordona descrescatordoua cuvinte din lista in funtie de numarul lor de aparitii si crescator 
+cuvintele lexicografic.
+ 	
+ 	Functia cuvinte verifica daca un cuvant dat ca parametru a mai fost introdus in lista. Daca da,returneaza pozitia lui din lsita.Deoarece pozitiile vor fi 
+numere naturale, inclusiv 0, functia va returna -1 daca cuvantul nu a fost introdus inainte in lista.
+ 	
+ 	Functia distanta calculeaza distanta dintre 2 cuvinte dupa forumla indicata: determinam lungime maxima si lungimea minima a celor doua cuvinte, iar pana la
+lungimea minima putem efectua dierenta dintre codurilor ASCII ale caracterelor de pe pozitii identice dintre cele 2 cuvinte. Apoi se va completa corspunzator
+pana la lungimea maxima.
+ 	
+ 	Functia similitudine returneaza similitudinea dintre cele doua texte.Identificam minimul dintre numarul de cuvinte ale celor doua liste, apoi se calculeaza 
+ imilitudinea dupa formula indicata.
+
+ 	In main se vor citii numarul de linii pentru cele doua texte,iar apoi textele. Folosind functia strtok despartim textul in cuvinte si cu ajutorul functiei
+cuvinte verificam daca cuvantul se afla in lista sau nu.Daca da,ii crestem numarul de aparitii, iar daca nu, il introducem in lista,initializam numarul de
+ aaritii ale cuvantului respectiv cu 1 si marim lungimea listei,respectiv numarul de cuvinte.In final, apelam functia qsort pentru cele doua liste, iar apoi 
+functia similitudine, care va returna similitudinea celor doua texte.
